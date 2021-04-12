@@ -50,7 +50,18 @@ var employees = [
     3. Return the updated employee array.
 */
 
-//Code Here
+function employeeUpdater(){
+  for (let i = 0;i<employees.length;i++){
+    for (var key in employees[i]){
+      if (key === 'firstName' && employees[i][key] === 'Theo'){
+        delete employees[i]
+      } else if (key === 'firstName' && employees[i][key] === 'Lorie'){
+        employees[i].department = 'HR';
+      }
+    }
+  }
+  return employees
+}
 
 
 
@@ -68,8 +79,33 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
     3. Return the updated array.
 */
 
-//Code Here
-
+function removeDuplicates(acc){
+  let newArray = [];
+  let copyArr = acc.slice();
+  let finalArray = [];
+  for (let i = 0; i<copyArr.length; i++){
+    let element = copyArr[i];
+    // console.log(element)
+    let idx = copyArr.indexOf(element);
+    // console.log(idx)
+    while (idx !== -1){
+      newArray.push(idx);
+      idx = copyArr.indexOf(element, idx + 1);
+    }
+    for (let j = 0; j<newArray.length; j++){
+      if (j===0 && finalArray.includes(element)===false){
+        finalArray.push(element);
+      }
+    }
+    // if (workplaceAccidents.indexOf(workplaceAccidents[i],i+1)>-1){
+      // workplaceAccidents.filter(let acc = (workplaceAccidents[i]) => workplaceAccidents !== workplaceAccidents[i];)
+    // }
+  }
+  let workplaceAccidents = finalArray;
+  return workplaceAccidents
+}
+// let ans = removeDuplicates(workplaceAccidents);
+// console.log(ans)
 
 
 ////////// PROBLEM 3 //////////
@@ -97,8 +133,8 @@ var cat = {
 */
 
 //Code Here
-var grumpyActivity;
-var fluffy2ndFriend;
+var grumpyActivity = cat.catFriends[0].activities[1];
+var fluffy2ndFriend = cat.catFriends[1].name;
 
 
 
@@ -138,7 +174,19 @@ var myCar = {
     3. Change atFaultForAccident from true to false.
 */
 
-//Code Here
+let obj = {...myCar};
+let recordCleaner = ()=>{
+  let objArr = obj.accidents;
+  for (let i = 0; i<obj.accidents.length; i++){
+    let chgVar = objArr[i].atFaultForAccident;
+    let finVar = chgVar ? false : false;
+    obj.accidents[i].atFaultForAccident = finVar;
+    // console.log(finVar)
+  }
+  myCar = obj;
+  return myCar
+}
+// recordCleaner(myCar)
 
 
 
@@ -157,6 +205,13 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
     4. Return the modified numsArr.
 */
 
-//Code Here
+function looper(){
+  for (let i = 0;i<numsArr.length;i++){
+    for (let j = 0;j<numsArr[i].length;j++){
+      numsArr[i][j] = numsArr[i][j] % 2 === 0 ? 'even' : 'odd';
+    }
+  }
+  return numsArr
+}
 
 
